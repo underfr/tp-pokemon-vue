@@ -3,7 +3,7 @@ import { PokeService } from "./PokeService"
 
 const service = new PokeService()
 
-export function PokeCries(id: Ref<number>) {
+export function PokeCries(id: Ref<number | string>) {
     const pokemon = ref<any>(null)
     const loading = ref(false)
 
@@ -22,7 +22,9 @@ export function PokeCries(id: Ref<number>) {
     function playCry() {
         const url = pokemon.value?.cries?.latest
         if (!url) return
-        new Audio(url).play().catch(console.error)
+        const audio = new Audio(url)
+        audio.volume = 0.5
+        audio.play().catch(console.error)
     }
 
     onMounted(load)

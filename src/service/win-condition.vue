@@ -55,8 +55,9 @@ function verifierFinCombat() {
 }
 
 function reinitialiser() {
-    etatCombat.value = 'EN_COURS'
-    emit(etatCombat.value === 'VICTOIRE' ? 'continuer' : 'rejouer')
+  const etat = etatCombat.value
+  etatCombat.value = 'EN_COURS'
+  emit(etat === 'VICTOIRE' ? 'continuer' : 'rejouer')
 }
 
 // Vérifie les conditions
