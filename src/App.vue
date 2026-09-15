@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import PlayerComponent from "./components/PlayerComponent.vue";
-import BattleLog from "./components/BattleLog.vue";
+import Fetch from "./services/fetch.vue";
 </script>
 
 
 <template>
-  <BattleLog/>
-  <PlayerComponent/>
+  <fetch :poke="3"/>
 </template>
