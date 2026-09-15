@@ -3,5 +3,5 @@ import PlayerComponent from "./components/PlayerComponent.vue";
 </script>
 
 <template>
-  <PlayerComponent/>
+  <PlayerComponent />
 </template>
