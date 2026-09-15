@@ -2,7 +2,9 @@
 import ChoosePokemonComponent from "./components/ChoosePokemonComponent.vue";
 import Fetch from "./services/fetch.vue";
 import PlayerComponent from "./components/PlayerComponent.vue";
+import OpponentComponent from "./components/OpponentComponent.vue";
 </script>
+
 
 <template>
   <ChoosePokemonComponent/>
