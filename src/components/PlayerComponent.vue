@@ -1,6 +1,18 @@
 <script setup lang="ts">
-    import { ref } from "vue";
+    import { ref, onMounted } from "vue";
+    import {PokeService} from "../services/PokeService.ts";
 
+    const service = new PokeService();
+
+    onMounted(async () => {
+        try {
+            console.log(pokemon);
+            pokemon.value = await service.fetchPokemon(props.poke);
+        } catch (err) {
+            console.error(err)
+            pokemon.value = null
+        }
+    })
 
     const pokemonTest = {
         id: 1,
@@ -29,13 +41,35 @@
     const spritePlayer = pokemonTest.sprites.front_default;
     const maxHp = 150;
     const soin = 30;
+    const damage = 18;
+    const specialDamage = 45;
     const currentHp = ref<number>(maxHp);
+    const turns = ref<number>(0);
     function heal(){
         if (currentHp.value<maxHp-soin){
             currentHp.value+=soin;
         } else if (currentHp.value<maxHp){
             currentHp.value=maxHp;
         }
+        turns.value++;
+    }
+
+    function attack(){
+        if (currentHp.value>0+damage){
+            currentHp.value-=damage;
+        } else if (currentHp.value>0){
+            currentHp.value=0;
+        }
+        turns.value++;
+    }
+
+    function specialAttack(){
+        if (currentHp.value>0+specialDamage){
+            currentHp.value-=specialDamage;
+        } else if (currentHp.value>0){
+            currentHp.value=0;
+        }
+        turns.value++;
     }
 
 </script>
@@ -64,10 +98,10 @@
             </div>
         </div>
         <nav class="flex w-full flex-col gap-3 md:w-40" aria-label="Actions du joueur">
-                <button class="btn btn-primary">Attaquer</button>
-                <button class="btn btn-secondary">Pokemon</button>
+                <button class="btn btn-primary" @click="attack()">Attaquer</button>
+                <button class="btn btn-secondary" @click="specialAttack()">Pokemon</button>
                 <button class="btn btn-accent" @click="heal()">Soin</button>
-                <button class="btn btn-outline">Fuir</button>
+                <button class="btn btn-outline" @click="leave()">Fuir</button>
         </nav>
     </div>
 </template>
