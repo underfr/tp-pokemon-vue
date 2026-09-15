@@ -94,7 +94,7 @@
     </div>
     <nav class="flex w-full flex-col gap-3 md:w-40" aria-label="Actions du joueur">
             <button class="btn btn-primary" @click="attack()">Attaquer</button>
-            <button class="btn btn-secondary" @click="specialAttack()">Pokemon</button>
+            <button class="btn btn-secondary" @click="specialAttack()">Attaque spéciale</button>
             <button class="btn btn-accent" @click="heal()">Soin</button>
             <button class="btn btn-outline">Fuir</button>
     </nav>
