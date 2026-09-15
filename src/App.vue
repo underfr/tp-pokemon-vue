@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import PlayerComponent from "./components/PlayerComponent.vue";
+import Fetch from "./services/fetch.vue";
 </script>
 
 <template>
-  <PlayerComponent/>
+  <fetch :poke="3"/>
 </template>
